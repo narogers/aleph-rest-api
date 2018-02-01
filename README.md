@@ -10,13 +10,17 @@ Check out the repository into your web site. It is suggested that you mount the 
 Set the environment keys which will allow for communication with external systems. To configure php-fpm you would add the following entries to the pool definition.
 
 ```
-env[WORLDCAT_API] = "mySuperSecretAPIKey"
-env[ALEPH_HOST] = "http://my.aleph.host"
-env[ALEPH_X_ENDPOINT] = "/X?op=find&base=mylibrary"
-env[DB_HOST] = "localhost"
-env[DB_USERNAME] = "user"
-env[DB_PASSWORD] = "password"
-env[DB_DATABASE] = "database"
+env[REST_HOSTNAME] = "localhost"
+env[REST_WORLDCAT_KEY] = "mySuperSecretAPIKey"
+env[REST_WORLDCAT_URI] = "http://www.worldcat.org/webservices"
+env[REST_ALEPH_HOST] = "http://my.aleph.host"
+env[REST_ALEPH_X] = "/X?op=find&base=mylibrary"
+env[REST_ALEPH_LIBRARY] = "mylibrary"
+env[REST_CATALOG_URI] = "localhost/opac"
+env[REST_DB_HOST] = "localhost"
+env[REST_DB_USERNAME] = "user"
+env[REST_DB_PASSWORD] = "password"
+env[REST_DB_DATABASE] = "database"
 ```
 
 ## Usage
