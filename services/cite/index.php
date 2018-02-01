@@ -40,7 +40,7 @@ print $content;
 function fetch_citation($ids, $url) {
         $db_host = getenv('REST_DB_HOST') ?: "localhost";
         $db_database = getenv('REST_DB_DATABASE') ?: "citations";
-        $db_user = getenv('REST_DB_USER') ?: "user";
+        $db_user = getenv('REST_DB_USERNAME') ?: "user";
         $db_password = getenv('REST_DB_PASSWORD') ?: "password";
 
 	$mysqli = @mysqli_connect($db_host, $db_user, $db_password, $db_database);

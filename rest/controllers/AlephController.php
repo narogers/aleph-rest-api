@@ -341,7 +341,7 @@ class AlephController extends CMAController implements caching
          * Fetch a citation from Worldcat using the OCLC number
          */
 	private function fetchCitation($oclc, $ids = array('alephid'=>'','oclc'=>''), $root = 'search') {
-                $worldcat_uri = getenv("REST_WORLDCAT_URI") ?: "http://www.worldcat.org/webservices";
+                $worldcat_uri = getenv("REST_WORLDCAT_API") ?: "http://www.worldcat.org/webservices";
 		$url = "$worldcat_uri/catalog/content/citations/$oclc?cformat=chicago&wskey=${this->worldcatKey}";
 		$sql = "select citation, callNo from citations where oclc = '".$oclc."'";
 		
