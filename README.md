@@ -23,17 +23,17 @@ env[DB_DATABASE] = "database"
 The application exposes several RESTful endpoints for consumption of library data.
 
 ### Citation Resolution
-services/cite/index.php?isbn=[ISBN] will perform a lookup against OCLC WorldCat and return a properly formatted citation for the record.
+_services/cite/index.php?isbn=[ISBN]_ will perform a lookup against OCLC WorldCat and return a properly formatted citation for the record.
 
 ### Library Catalog
 Various endpoints are defined for access to search the catalog by different attributes including
-- alephid (aleph/alephid/+[ALEPHID])
-- artist (aleph/artist/+[ARTIST])
-- object (aleph/object/+[ACCESSION_NUMBER])
-- oclc (aleph/oclc/+[OCLC_CALL_NUMBER])
+- Accession Number (_aleph/object/+[ACCESSION_NUMBER]_)
+- Aleph ID (_aleph/alephid/+[ALEPHID]_)
+- Artist (_aleph/artist/+[ARTIST]_)
+- OCLC Call Number (_aleph/oclc/+[OCLC_CALL_NUMBER]_)
 
 In addition a list of recent acquisitions can be retrieved using the endpoint
 - mondaytable (aleph/mondaytable)
 
 ### New Title Feed
-rss/new_titles.php generates a list of recently added titles from the Ingalls catalog. Information is pulled from Aleph using the X API.
+_rss/new_titles.php_ generates a list of recently added titles from the Ingalls catalog. Information is pulled from Aleph using the X API.
