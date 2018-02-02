@@ -2,39 +2,46 @@
 $worldcat_key = getenv('REST_WORLDCAT_KEY') ?: "worldcat_api_key";
 $worldcat_api = getenv('REST_WORLDCAT_API') ?: "http://www.worldcat.org/webservices";
 
-// Prefer ISBN
-if ($_GET['isbn'] != 0) {
-	$url[] = "$worldcat_api/catalog/content/citations/isbn/".$_GET['isbn']."?cformat=chicago&wskey=".$worldcat_key;
-	$ids = array("isbn"=>$_GET['isbn']);
+$isbn = isset($_GET["isbn"]) ? $_GET["isbn"] : 0;
+$url[] = "";
+
+if ($isbn != 0) {
+	$url[] = "$worldcat_api/catalog/content/citations/isbn/$isbn?cformat=chicago&wskey=$worldcat_key";
+	$ids = array("isbn"=>$isbn);
 } else {
 	$ids['isbn'] = '';
 }
 foreach (array("issn","oclc","aleph","lc") as $a) {
 	$ids[$a] = '';
 
-	if ($a == 'issn' && preg_match("#^[0-9X]{4}-[0-9X]{4}$#",trim($_GET[$a])) ) {
-			$ids[$a] = ($_GET[$a] ? $_GET[$a] : 0);
-			if ($_GET[$a] > 0) {
-				$url[] = "$worldcat_api/catalog/content/citations/issn/".$_GET[$a]."?cformat=chicago&wskey=".$worldcat_key;
+	if (($a == 'issn') &&
+            isset($_GET[$a]) && 
+            preg_match("#^[0-9X]{4}-[0-9X]{4}$#",trim($_GET[$a]))) {
+	      $ids[$a] = isset($_GET[$a]) ? $_GET[$a] : 0;
+	      if ($_GET[$a] > 0) {
+	        $url[] = "$worldcat_api/catalog/content/citations/issn/${_GET[$a]}?cformat=chicago&wskey=$worldcat_key";
 			}
-	} else if (($a == 'oclc' || $a == 'aleph') && is_numeric($_GET[$a])) {
-		$ids[$a] = ($_GET[$a] ? $_GET[$a] : 0);
+	} else if (($a == 'oclc' || $a == 'aleph') &&
+            isset($_GET[$a]) && 
+            is_numeric($_GET[$a])) {
+	  $ids[$a] = isset($_GET[$a]) ? $_GET[$a] : 0;
 			
-		if ($a == 'oclc' && $_GET[$a] > 0) {
-			$url[] = "$worldcat_api/catalog/content/citations/".$_GET[$a]."?cformat=chicago&wskey=".$worldcat_key;
+	  if ($a == 'oclc' && $_GET[$a] > 0) {
+	    $url[] = "$worldcat_api/catalog/content/citations/${_GET[$a]}?cformat=chicago&wskey=$worldcat_key";
 		}
-	} else if ($a == 'lc' && is_numeric($_GET[$a])) {
-		if ($_GET[$a] > 0) {
-			$url[] = "$worldcat_api/catalog/content/citations/sn/".$_GET[$a]."?cformat=chicago&wskey=".$worldcat_key;
-		}
+	} else if ($a == 'lc' && 
+            isset($_GET[$a]) &&
+            is_numeric($_GET[$a])) {
+	  if ($_GET[$a] > 0) {
+	  $url[] = "$worldcat_api/catalog/content/citations/sn/${_GET[$a]}?cformat=chicago&wskey=$worldcat_key";
 	}
+    }
 }
 
 // Worldcat limits us to 1000 requests per day.
 // Try to get the citation from the local database cache first.
 // Fallback to make the API request.
 $content = fetch_citation($ids, $url);
-
 print $content;
 
 function fetch_citation($ids, $url) {
@@ -44,7 +51,6 @@ function fetch_citation($ids, $url) {
         $db_password = getenv('REST_DB_PASSWORD') ?: "password";
 
 	$mysqli = @mysqli_connect($db_host, $db_user, $db_password, $db_database);
-	/* check connection */
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		return '';
@@ -61,8 +67,12 @@ function fetch_citation($ids, $url) {
 	if ($res = mysqli_query($mysqli, $sql)) {
 		$row = mysqli_fetch_assoc($res);
 
-		$callNo = mysqli_real_escape_string($mysqli, mb_convert_encoding($_GET['callNo'], "UTF-8"));
-		
+                if (isset($_GET["callNo"])) { 
+		  $callNo = mysqli_real_escape_string($mysqli, mb_convert_encoding($_GET['callNo'], "UTF-8"));
+		} else {
+                  $callNo = 0;                
+                }
+
 		if (!$row['citation']) {
 			foreach ($url as $u) {
 				$content = file_get_contents($u);
