@@ -20,9 +20,6 @@ class CitationService implements CitationInterface {
     switch ($format) {
       case "chicago":
         return $this->format_as_chicago($metadata);
-        break;
-      default:
-        return null;
     }
   }
 
@@ -31,19 +28,26 @@ class CitationService implements CitationInterface {
    * citation
    */
   public function format_as_chicago(array $metadata) {
-    $author = $this->strip_punctuation($metadata['author']);
-    $title = $this->strip_punctuation($metadata['title']);
+    $citation = "";
     
-    $publication = "";
+    if (array_key_exists("author", $metadata)) {
+      $citation .= $this->strip_punctuation($metadata['author']);
+      $citation .= ". ";
+    }
+
+    $citation .= "<i>";
+    $citation .= $this->strip_punctuation($metadata['title']);
+    $citation .= ".</i>";
+   
     if (isset($metadata['publication']['location'])) {
-      $publication .= $this->strip_punctuation($metadata['publication']['location']);
-      $publication .= ": ";
-      $publication .= $this->strip_punctuation($metadata['publication']['publisher']);
-      $publication .= ", ";
-      $publication .= $metadata['publication']['year'];
+      $citation .= " ";
+      $citation .= $this->strip_punctuation($metadata['publication']['location']);
+      $citation .= ": ";
+      $citation .= $this->strip_punctuation($metadata['publication']['publisher']);
+      $citation .= ", ";
+      $citation .= $metadata['publication']['year'];
     }
     
-    $citation = "$author. <i>$title.</i> $publication";
     return $citation; 
   }
 

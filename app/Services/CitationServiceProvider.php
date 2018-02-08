@@ -6,6 +6,9 @@ namespace App\Services;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * @codeCoverageIgnore
+ */
 class CitationServiceProvider extends ServiceProvider {
   /**
    * Defer loading until needed

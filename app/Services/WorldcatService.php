@@ -4,7 +4,9 @@
    */
   namespace App\Services;
 
+  use App\Exceptions\ConfigurationException;
   use GuzzleHttp\Client;
+  use GuzzleHttp\Exception\ClientException;
   use Illuminate\Support\Facades\Cache;
   use Illuminate\Support\Facades\Log;
   use Illuminate\Support\Str;
@@ -18,13 +20,10 @@
      * a valid Worldcat API key or you may get unexpected results from
      * Guzzle
      */
-    public function __construct() {
+    public function __construct(Client $client) {
       $this->worldcat_key = config("apis.oclc.key", "changeMe");
-      $this->worldcat_base = "http://www.worldcat.org/webservices/";
-
-      $this->client = new Client([
-        'base_uri' => $this->worldcat_base
-      ]);
+      $this->worldcat_base = "http://www.worldcat.org/webservices";
+      $this->client = $client;
     }
 
     /**
@@ -38,12 +37,21 @@
         return $citation;
       }
 
-      $response = $this->client->get("catalog/content/citations/$oclc_number",
-        ["query" => ["cformat" => "chicago", "wskey" => $this->worldcat_key]]);
+      try {
+        $response = $this->client->get(
+          $this->worldcat_base . "_base/catalog/content/citations/$oclc_number",
+          ["query" => [
+            "cformat" => "chicago", 
+            "wskey" => $this->worldcat_key]]);
+      } catch (ClientException $api_error) {
+        throw new ConfigurationException("Could not contact OCLC Worldcat API services", 400, $api_error);
+      }
+
       if (Str::endsWith($response->getBody(), "Record does not exist")) {
         $citation = null;
       } else {
         $citation = strip_tags($response->getBody(), "<i><u><span>");
+        $citation = trim($citation);
         // Cached citations should expire in a month
         Cache::add($oclc_number, $citation, 60*24*30);
       }  

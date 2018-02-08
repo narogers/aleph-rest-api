@@ -6,7 +6,6 @@
 namespace App\Services;
 
 use DOMDocument;
-
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -21,13 +20,12 @@ class AlephService implements ILSInterface {
    * that the IP address is allowed to connect or you may see unexpected
    * responses
    */
-  public function __construct() {
+  public function __construct(Client $client) {
+    $this->client = $client;
+
     $this->aleph_endpoint = config("apis.aleph.uri", 
       "http://localhost:8991/X/");
-    $this->client = new Client(['base_uri' => $this->aleph_endpoint]);
-
-    $this->opac_uri = config("apis.opac.base_uri",
-      "http://localhost");
+    $this->opac_uri = config("apis.opac.base_uri", "http://localhost");
   }
 
   /**
@@ -52,13 +50,13 @@ class AlephService implements ILSInterface {
         break;
     }
 
-    $response = $this->client->get('', ['query' => $query_parameters]);
+    $response = $this->client->get($this->aleph_endpoint, 
+      ['query' => $query_parameters]);
     $aleph_document = new DOMDocument();
     $aleph_document->loadXML((string)$response->getBody());
 
     $errors = $aleph_document->getElementsByTagName("error");
     if ($errors->length > 0) {
-      print $response->getBody();
       if ("empty set" == (string) $errors->item(0)->nodeValue) {
         return []; 
       } else {
@@ -106,7 +104,8 @@ class AlephService implements ILSInterface {
        $query_parameters = array_merge(
          $this->query_parameters_for_callNumber($identifier),
          $this->default_parameters());
-       $response = $this->client->get('', ['query' => $query_parameters]);
+       $response = $this->client->get($this->aleph_endpoint, 
+         ['query' => $query_parameters]);
  
        $parser->loadXML((string)$response->getBody());
        $set_element = $parser->getElementsByTagName("set_number");
@@ -115,14 +114,16 @@ class AlephService implements ILSInterface {
            ["op" => "present",
             "set_entry" => 1,
             "set_number" => $set_element->item(0)->nodeValue]);
-         $marc_response = $this->client->get('', ['query' => $marc_parameters]);
+         $marc_response = $this->client->get($this->aleph_endpoint, 
+           ['query' => $marc_parameters]);
          $parser->loadXML((string)$marc_response->getBody());
          $marc_fragment = $parser->getElementsByTagName("metadata");
        } 
     } else if ("aleph_id" == $type) {
        $query_parameters = array_merge($this->default_parameters(),
          $this->query_parameters_for_alephId($identifier));
-       $marc_response = $this->client->get('', ['query' => $query_parameters]);
+       $marc_response = $this->client->get($this->aleph_endpoint, 
+         ['query' => $query_parameters]);
        $parser->loadXML((string)$marc_response->getBody());
        $marc_fragment = $parser->getElementsByTagName("record"); 
      } 
@@ -133,10 +134,7 @@ class AlephService implements ILSInterface {
      }
 
      $marc_fragment = $marc_fragment->item(0);
-     $marc_document = new DOMDocument();
-     $marc_node = $marc_document->importNode($marc_fragment, true);
-     $marc_document->appendChild($marc_node);
-     $marc = $this->normalize_marc($marc_document);
+     $marc = $this->normalize_marc($marc_fragment);
 
      $properties['author'] = $this->process_marc($marc, 
        ['100$a', '110$a', '130$a', '700$a', '710$a']);
@@ -166,7 +164,7 @@ class AlephService implements ILSInterface {
 
      if (str_contains($properties['language'], '^')) {
        $language_code = [];
-       preg_match("/\^(\w{3})\^$/",
+       preg_match("/\^(\w{3})\^\^$/",
          $properties['language'], $language_code);
        $properties['language'] = $language_code[1]; 
      }
@@ -189,7 +187,8 @@ class AlephService implements ILSInterface {
       "op" => "find",
       "request" => urlencode("WIPC=MT")
     ]);
-    $response = $this->client->get('', ['query' => $set_query_parameters]);
+    $response = $this->client->get($this->aleph_endpoint, 
+      ['query' => $set_query_parameters]);
 
     $parser = new DOMDocument();
     $parser->loadXML((string)$response->getBody());
@@ -213,15 +212,14 @@ class AlephService implements ILSInterface {
       "set_entry" => "001-" . $record_count->nodeValue,
       "set_number" => $set_number->nodeValue  
     ]);
-    $marc_response = $this->client->get('', 
+    $marc_response = $this->client->get($this->aleph_endpoint, 
       ['query' => $marc_query_parameters]);
     $marc_records = $parser->loadXML((string)$marc_response->getBody());
-    
-    print($parser->getElementsByTagName('metadata')->length);
-
+    $marc_records = $parser->getElementsByTagName("metadata");   
+ 
     foreach ($marc_records as $aleph_record) {
       $marc = $this->normalize_marc($aleph_record);
-      
+
       $aleph_id = $this->process_marc($marc, ['001']);
       $title = $this->process_marc($marc, ['245$a']);
       $subtitle = $this->process_marc($marc, ['245$b']);
@@ -230,10 +228,10 @@ class AlephService implements ILSInterface {
       $location = $this->process_marc($marc, ['852$b', '050$b']);
 
       $records[$aleph_id] = [
-        ['title'] => trim("$title$subtitle"),
-        ["link"] => 
+        'title' => trim("$title$subtitle"),
+        "link" => 
           $this->opac_uri . "/F/?func=find-c&ccl_term=sys%3D$aleph_id",
-        ["description"] => "Location: $location $callNumber"
+        "description" => "Location: $location $callNumber"
       ];
     } 
 
@@ -323,15 +321,19 @@ class AlephService implements ILSInterface {
    * @param string $oai_marc
    * @return File_MARC_Record
    */
-  protected function normalize_marc(DOMDocument $oai_marc) {
+  protected function normalize_marc(\DOMElement $oai_marc) {
     $xslt_stylesheet = config("apis.marc.stylesheet", "oai-to-marc.xsl");
-    
+   
+    $oai_document = new DOMDocument();
+    $oai_node = $oai_document->importNode($oai_marc, true);
+    $oai_document->appendChild($oai_node);    
+  
     $xslt = new DOMDocument();
     $xslt->load($xslt_stylesheet);
     $processor = new \XSLTProcessor();
     $processor->importStylesheet($xslt);
 
-    $marc_xml = $processor->transformToXML($oai_marc);
+    $marc_xml = $processor->transformToXML($oai_document);
     $marc = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
 
     if ($marc_record = $marc->next()) {
@@ -368,8 +370,12 @@ class AlephService implements ILSInterface {
         if ($marc_value) { break; }
       }
     }
-
-    return $marc_value->getData();
+   
+    if (false !== $marc_value) {
+      return $marc_value->getData();
+    } else {
+      return null;
+    }
   }
 }
 ?>

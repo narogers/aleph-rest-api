@@ -20,7 +20,7 @@
 	<xsl:template match="fixfield">
 		<xsl:element name="controlfield">
 			<xsl:call-template name="id2tag"/>
-			<xsl:value-of select="substring(text(),2,string-length(text())-2)"/>
+			<xsl:value-of select="text()"/>
 		</xsl:element>
 	</xsl:template>
 

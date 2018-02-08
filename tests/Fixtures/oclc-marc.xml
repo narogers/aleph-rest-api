@@ -1,0 +1,168 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<present>
+<record>
+<record_header>
+<set_entry>000000001</set_entry>
+</record_header>
+<doc_number>000001</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200385Ia^4500</fixfield>
+<fixfield id="001">000001</fixfield>
+<fixfield id="005">20070816145834.0</fixfield>
+<fixfield id="008">051012s2006^^^^maua^^^^^b^^^^001^0^eng^^</fixfield>
+<varfield id="010" i1=" " i2=" ">
+<subfield label="a">2005056133</subfield>
+</varfield>
+<varfield id="015" i1=" " i2=" ">
+<subfield label="a">GBA614531</subfield>
+<subfield label="2">bnb</subfield>
+</varfield>
+<varfield id="016" i1="7" i2=" ">
+<subfield label="a">013380749</subfield>
+<subfield label="2">Uk</subfield>
+</varfield>
+<varfield id="019" i1=" " i2=" ">
+<subfield label="a">62124167</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">000003 (alk. paper)</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9781590303139 (alk. paper)</subfield>
+</varfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)000002</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">DLC</subfield>
+<subfield label="c">DLC</subfield>
+<subfield label="d">BAKER</subfield>
+<subfield label="d">C#P</subfield>
+<subfield label="d">UKM</subfield>
+<subfield label="d">IG#</subfield>
+<subfield label="d">YDXCP</subfield>
+<subfield label="d">BTCTA</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1="0" i2="0">
+<subfield label="a">N6537.M473</subfield>
+<subfield label="b">L57 2006</subfield>
+</varfield>
+<varfield id="100" i1="1" i2=" ">
+<subfield label="a">Lipsey, Roger,</subfield>
+<subfield label="d">1942-</subfield>
+</varfield>
+<varfield id="245" i1="1" i2="0">
+<subfield label="a">Angelic mistakes :</subfield>
+<subfield label="b">the art of Thomas Merton /</subfield>
+<subfield label="c">Roger Lipsey ; foreword by Paul M. Pearson.</subfield>
+</varfield>
+<varfield id="246" i1="3" i2="0">
+<subfield label="a">Art of Thomas Merton</subfield>
+</varfield>
+<varfield id="250" i1=" " i2=" ">
+<subfield label="a">1st ed.</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Boston, Mass. :</subfield>
+<subfield label="b">New Seeds ;</subfield>
+<subfield label="a">[New York] :</subfield>
+<subfield label="b">Distributed in the United States by Random House,</subfield>
+<subfield label="c">2006.</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">xvii, 197 pages :</subfield>
+<subfield label="b">illustrations ;</subfield>
+<subfield label="c">24 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="504" i1=" " i2=" ">
+<subfield label="a">Includes bibliographical references (pages 187-190) and index.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Merton, Thomas,</subfield>
+<subfield label="d">1915-1968</subfield>
+<subfield label="x">Criticism and interpretation.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Christian art and symbolism.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Zen art</subfield>
+<subfield label="x">Influence.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Merton, Thomas,</subfield>
+<subfield label="d">1915-1968.</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">CONV</subfield>
+<subfield label="b">20</subfield>
+<subfield label="c">20070525</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1052</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20070816</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1458</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MURRY</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20070816</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1458</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">ZCAT</subfield>
+<subfield label="b">20</subfield>
+<subfield label="c">20110529</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">0758</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="c">20150501</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1627</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<session-id>E6AA1JQ5ULVP56CX2RACPIG28I4F15A4DJCT6KJ1LG6U881AB5</session-id>
+</present>
+ 
