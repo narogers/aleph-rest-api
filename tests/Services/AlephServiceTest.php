@@ -155,14 +155,13 @@ class AlephServiceTest extends TestCase {
     );
 
     $titles = $this->aleph_client->recent_titles();
-    $summary = $titles['123454321'];
+    $summary = $titles[0];
  
     $this->assertCount(5, $titles);
-    $this->assertArrayHasKey("123454321", $titles);
-    $this->assertEquals("Shinpan sekai jinmei jiten.", $summary['title']);
+    $this->assertEquals("Shinpan sekai jinmei jiten.", $summary->getTitle());
     $this->assertStringEndsWith("/F/?func=find-c&ccl_term=sys%3D123454321",
-      $summary['link']);
-    $this->assertEquals("Location: .S55 1973 DS32", $summary['description']);
+      $summary->getLink());
+    $this->assertEquals("Location: .S55 1973 DS32", $summary->getDescription());
   } 
 
   /**

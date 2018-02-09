@@ -12,7 +12,16 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix("citation")->group(function() {
+  Route::get("aleph/{alephId}", "CitationApiController@getAlephCitation");
+  Route::get("isbn/{isbn}", "CitationApiController@getISBNCitation");
+  Route::get("issn/{Issn}", "CitationApiController@getISSNCitation");
+  Route::get("lc/{call_number}", "CitationApiController@getLCCitation");
+  Route::get("oclc/{call_number}", "CitationApiController@getOCLCCitation");
+});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix("opac")->group(function() {
+  Route::get("artist/{artist}", "OPACApiController@getLinkForArtist");
+  Route::get("object/{id}", "OPACApiController@getLinkForObject");
+  Route::get("recent_titles", "OPACApiController@getRecentTitles");
 });

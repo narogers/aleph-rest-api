@@ -15,7 +15,6 @@ return [
     |            "sparkpost", "log", "array"
     |
     */
-
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
@@ -28,7 +27,6 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
@@ -41,7 +39,6 @@ return [
     | stay compatible with the Mailgun e-mail application by default.
     |
     */
-
     'port' => env('MAIL_PORT', 587),
 
     /*
@@ -54,7 +51,6 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
@@ -70,7 +66,6 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
@@ -83,9 +78,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-
     'username' => env('MAIL_USERNAME'),
-
     'password' => env('MAIL_PASSWORD'),
 
     /*
@@ -98,7 +91,6 @@ return [
     | been provided here, which will work well on most of your systems.
     |
     */
-
     'sendmail' => '/usr/sbin/sendmail -bs',
 
     /*
@@ -111,7 +103,6 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-
     'markdown' => [
         'theme' => 'default',
 
@@ -119,5 +110,4 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];

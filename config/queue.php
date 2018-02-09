@@ -14,7 +14,6 @@ return [
     | Supported: "sync", "database", "beanstalkd", "sqs", "redis", "null"
     |
     */
-
     'default' => env('QUEUE_DRIVER', 'sync'),
 
     /*
@@ -27,13 +26,10 @@ return [
     | for each back-end shipped with Laravel. You are free to add more.
     |
     */
-
     'connections' => [
-
         'sync' => [
             'driver' => 'sync',
         ],
-
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',
@@ -63,7 +59,6 @@ return [
             'queue' => 'default',
             'retry_after' => 90,
         ],
-
     ],
 
     /*
@@ -76,10 +71,8 @@ return [
     | have failed. You may change them to any database / table you wish.
     |
     */
-
     'failed' => [
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],
-
 ];

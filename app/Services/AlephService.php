@@ -5,6 +5,7 @@
  */
 namespace App\Services;
 
+use App\Models\CatalogItem;
 use DOMDocument;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
@@ -227,12 +228,14 @@ class AlephService implements ILSInterface {
         ['852$h', '852$i', '050$a', '050$b']);
       $location = $this->process_marc($marc, ['852$b', '050$b']);
 
-      $records[$aleph_id] = [
+      $properties = [
         'title' => trim("$title$subtitle"),
         "link" => 
           $this->opac_uri . "/F/?func=find-c&ccl_term=sys%3D$aleph_id",
         "description" => "Location: $location $callNumber"
       ];
+      $catalog_entry = new CatalogItem($properties);
+      array_push($records, $catalog_entry);
     } 
 
     return $records;
