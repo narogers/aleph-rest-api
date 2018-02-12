@@ -9,8 +9,8 @@ return [
    * performed
    */
   'aleph' => [
-    'library' => env("aleph.library", "default"),
-    'uri' => env("aleph.uri", "http://localhost:8991/X/"),
+    'library' => env("ALEPH_LIB", "default"),
+    'uri' => env("ALEPH_API", "http://localhost:8991/X/"),
   ],
 
   /**
@@ -19,7 +19,7 @@ return [
    * /var/www/html/oai-to-marc.xsl
    */
   'marc' => [
-    'stylesheet' => base_path(env("marc.stylesheet", "oai-to-marc.xsl")),
+    'stylesheet' => base_path(env("OAI_STYLESHEET", "oai-to-marc.xsl")),
   ],
 
   /**
@@ -27,7 +27,7 @@ return [
    * links back into the OPAC
    */
   'opac' => [
-    'base_uri' => env("opac.base_uri", "http://localhost"),
+    'base_uri' => env("OPAC_URI", "http://localhost"),
   ],
 
   /**
@@ -36,6 +36,6 @@ return [
    * available
    */
   'oclc' => [
-    'key' => env("oclc.key"),
+    'key' => env("OCLC_KEY"),
   ], 
 ];

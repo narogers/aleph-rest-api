@@ -27,6 +27,9 @@ class AlephService implements ILSInterface {
     $this->aleph_endpoint = config("apis.aleph.uri", 
       "http://localhost:8991/X/");
     $this->opac_uri = config("apis.opac.base_uri", "http://localhost");
+    if (!Str::endsWith($this->opac_uri, "/")) {
+      $this->opac_uri .= "/";
+    }
   }
 
   /**
@@ -39,34 +42,21 @@ class AlephService implements ILSInterface {
    *                    accession number (MARC field 905)
    */
   public function link_for(string $query, string $type) {
-    $query_parameters = $this->default_parameters();
+    $aleph_document = null;
     switch ($type) {
       case "accession_number":
-        $query_parameters = array_merge($query_parameters,
-          $this->query_parameters_for_accessionNumber($query));
+        $aleph_document = $this->query_aleph($this->query_parameters_for_accessionNumber($query)); 
         break;
       case "artist":
-        $query_parameters = array_merge($query_parameters,
-          $this->query_parameters_for_artist($query));
-        break;
+        $aleph_document = $this->query_aleph($this->query_parameters_for_artist($query));
     }
 
-    $response = $this->client->get($this->aleph_endpoint, 
-      ['query' => $query_parameters]);
-    $aleph_document = new DOMDocument();
-    $aleph_document->loadXML((string)$response->getBody());
-
-    $errors = $aleph_document->getElementsByTagName("error");
-    if ($errors->length > 0) {
-      if ("empty set" == (string) $errors->item(0)->nodeValue) {
-        return []; 
-      } else {
-        return null;
-      }
+    if (null == $aleph_document) {
+      return []; 
     } 
 
     $record_count = $aleph_document->getElementsByTagName("no_records");
-    $record_count = (integer) $record_count->item(0)->nodeValue; 
+    $record_count = (integer)$record_count->item(0)->nodeValue; 
     $opac_backlinks = [];
     if ($record_count > 0) {
       $opac_parameters = [];
@@ -76,7 +66,6 @@ class AlephService implements ILSInterface {
           break;
         case "artist":
           $opac_parameters = $this->link_parameters_for_artist($query);
-          break;
       }
       $opac_backlinks[$query] = [
         "uri" => "$this->opac_uri?" . http_build_query($opac_parameters),
@@ -99,34 +88,19 @@ class AlephService implements ILSInterface {
    */
   public function metadata_for(string $identifier, string $type = "aleph_id") {
     $marc_fragment = null;
-    $parser = new DOMDocument();
  
     if ("oclc" == $type) {
-       $query_parameters = array_merge(
-         $this->query_parameters_for_callNumber($identifier),
-         $this->default_parameters());
-       $response = $this->client->get($this->aleph_endpoint, 
-         ['query' => $query_parameters]);
- 
-       $parser->loadXML((string)$response->getBody());
-       $set_element = $parser->getElementsByTagName("set_number");
-       if (0 < $set_element->length) {
-         $marc_parameters = array_merge($this->default_parameters(),
-           ["op" => "present",
-            "set_entry" => 1,
-            "set_number" => $set_element->item(0)->nodeValue]);
-         $marc_response = $this->client->get($this->aleph_endpoint, 
-           ['query' => $marc_parameters]);
-         $parser->loadXML((string)$marc_response->getBody());
-         $marc_fragment = $parser->getElementsByTagName("metadata");
+       $set_document = $this->query_aleph($this->query_parameters_for_callNumber($identifier));
+       if ($set_document !== null) {
+         $set_number = $set_document->getElementsByTagName("set_number")[0]->nodeValue;
+         $marc_document = $this->query_aleph(["op" => "present",
+           "set_entry" => 1,
+           "set_number" => $set_number]);
+         $marc_fragment = $marc_document->getElementsByTagName("metadata");
        } 
     } else if ("aleph_id" == $type) {
-       $query_parameters = array_merge($this->default_parameters(),
-         $this->query_parameters_for_alephId($identifier));
-       $marc_response = $this->client->get($this->aleph_endpoint, 
-         ['query' => $query_parameters]);
-       $parser->loadXML((string)$marc_response->getBody());
-       $marc_fragment = $parser->getElementsByTagName("record"); 
+       $marc_document = $this->query_aleph($this->query_parameters_for_alephId($identifier));
+       $marc_fragment = $marc_document->getElementsByTagName("record"); 
      } 
 
      if ((null == $marc_fragment) ||
@@ -184,39 +158,20 @@ class AlephService implements ILSInterface {
    *    'link' => 'localhost/opac/234.564'
    */
   public function recent_titles() {
-    $set_query_parameters = array_merge($this->default_parameters(), [
-      "op" => "find",
-      "request" => urlencode("WIPC=MT")
-    ]);
-    $response = $this->client->get($this->aleph_endpoint, 
-      ['query' => $set_query_parameters]);
-
-    $parser = new DOMDocument();
-    $parser->loadXML((string)$response->getBody());
-    $set_number = $parser->getElementsByTagName("set_number")[0];
-    $record_count = $parser->getElementsByTagName("no_records")[0];
-    /**
-     * If no set number can be found terminate processing and return an
-     * empty list
-     *
-     * TODO: Handle <error> response with empty set by doing some logging.
-     *       Better yet abstract Aleph querying into a helper method to DRY
-     *       up entire service
-     */
-    if (null == $set_number) {
+    $aleph_document = $this->query_aleph(["op" => "find", 
+      "request" => urlencode("WIP=MT")]);
+    if (null == $aleph_document) {
       return []; 
     }
 
+    $set_number = $aleph_document->getElementsByTagName("set_number")[0]; 
+    $record_count = $aleph_document->getElementsByTagName("no_records")[0];
     $records = [];
-    $marc_query_parameters = array_merge($this->default_parameters(), [
-      "op" => "present",
+
+    $marc_document = $this->query_aleph(["op" => "present",
       "set_entry" => "001-" . $record_count->nodeValue,
-      "set_number" => $set_number->nodeValue  
-    ]);
-    $marc_response = $this->client->get($this->aleph_endpoint, 
-      ['query' => $marc_query_parameters]);
-    $marc_records = $parser->loadXML((string)$marc_response->getBody());
-    $marc_records = $parser->getElementsByTagName("metadata");   
+      "set_number" => $set_number->nodeValue]);
+    $marc_records = $marc_document->getElementsByTagName("metadata");   
  
     foreach ($marc_records as $aleph_record) {
       $marc = $this->normalize_marc($aleph_record);
@@ -231,7 +186,7 @@ class AlephService implements ILSInterface {
       $properties = [
         'title' => trim("$title$subtitle"),
         "link" => 
-          $this->opac_uri . "/F/?func=find-c&ccl_term=sys%3D$aleph_id",
+          $this->opac_uri . "F/?func=find-c&ccl_term=sys%3D$aleph_id",
         "description" => "Location: $location $callNumber"
       ];
       $catalog_entry = new CatalogItem($properties);
@@ -379,6 +334,35 @@ class AlephService implements ILSInterface {
     } else {
       return null;
     }
+  }
+
+  /**
+   * Abstraction for querying the Aleph X service in a robust way which
+   * handles most common errors. 
+   *
+   * If no errors occur it will return a DOM representation of the XML 
+   * response. In cases where the error state might be meaningful use a 
+   * custom query instead.
+   */
+  protected function query_aleph(array $parameters) {
+    $query_parameters = array_merge($parameters, $this->default_parameters());
+    $response = $this->client->get($this->aleph_endpoint,
+      ['query' => $query_parameters]);
+    
+    $aleph_dom = new DOMDocument();
+    $aleph_dom->loadXML((string)$response->getBody());
+    
+    $errors = $aleph_dom->getElementsByTagName("error");
+    if ($errors->length > 0) {
+      Log::warning("Unable to process Aleph request for " . 
+        $this->aleph_endpoint . "?" .
+        http_build_query($query_parameters));
+      Log::warning("Aleph returned message - " . $errors->item(0)->nodeValue);
+      
+      return null;
+    }
+
+    return $aleph_dom;
   }
 }
 ?>

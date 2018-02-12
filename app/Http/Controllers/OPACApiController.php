@@ -28,8 +28,11 @@ class OPACApiController extends Controller {
       $link_details['query'] = $artist;
       return view("opac.backlink", 
         ["link" => $link_details[$artist],
-         "query" => $artist]);
+         "query" => urldecode($artist)
+        ]);
     }
+  
+    return response("", 204);
   }
 
   /**
@@ -46,6 +49,8 @@ class OPACApiController extends Controller {
         ["link" => $link_details[$accession_number],
          "query" => $accession_number]);
     }
+  
+    return response("", 204);
   }
 
   /**

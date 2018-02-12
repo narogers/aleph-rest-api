@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ConfigurationException extends Exception {
   /**
    * Raise a 500 error and pass it along to the client to inform them that

@@ -5,11 +5,11 @@
     <link>{{ $feed['uri'] }}</link>
     <description>{{ $feed['description'] }}</description>
     @foreach ($records as $item)
-      <item>
-        <title>{{ $item->title }}</title>
-        <link>{{ $item->link }}</link>
-        <description>{{ $item->description }}</description>
-      </item>
+    <item>
+      <title>{{ $item->getTitle() }}</title>
+      <link>{!! $item->getLink() !!}</link>
+      <description>{{ $item->getDescription() }}</description>
+    </item>
     @endforeach  
   </channel>
 </rss>

@@ -62,5 +62,35 @@ class WorldcatServiceTest extends TestCase {
 
     $this->assertEquals('Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds.', $citation);
   }
+
+  public function testValidLCCitation() {
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/plain"],
+        '<p class="citation_style_CHICAGO">Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds. </p>'));
+
+    $citation = $this->oclc_client->citation_for("11111111", "lc");
+
+    $this->assertEquals('Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds.', $citation);
+  }
+
+  public function testValidISBNCitation() {
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/plain"],
+        '<p class="citation_style_CHICAGO">Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds. </p>'));
+
+    $citation = $this->oclc_client->citation_for("1231231234X", "isbn");
+
+    $this->assertEquals('Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds.', $citation);
+  }
+
+  public function testValidISSNCitation() {
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/plain"],
+        '<p class="citation_style_CHICAGO">Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds. </p>'));
+
+    $citation = $this->oclc_client->citation_for("987651234", "issn");
+
+    $this->assertEquals('Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds.', $citation);
+  }
 }
 ?>
