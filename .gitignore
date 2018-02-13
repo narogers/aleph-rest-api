@@ -1,1 +1,6 @@
 *.swp
+
+vendor/*
+coverage/*
+
+.env

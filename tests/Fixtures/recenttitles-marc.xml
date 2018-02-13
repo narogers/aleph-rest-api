@@ -1,0 +1,797 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<present>
+<record>
+<record_header>
+<set_entry>000000001</set_entry>
+</record_header>
+<doc_number>123454321</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200361Ia^4500</fixfield>
+<fixfield id="001">123454321</fixfield>
+<fixfield id="005">20160104135149.0</fixfield>
+<fixfield id="008">130819s1973^^^^ja^^^^^^^d^^^^000^0cjpn^^</fixfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)135797531</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">AU@</subfield>
+<subfield label="b">eng</subfield>
+<subfield label="c">AU@</subfield>
+<subfield label="d">OCLCO</subfield>
+<subfield label="d">OCLCF</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="043" i1=" " i2=" ">
+<subfield label="a">a------</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1=" " i2="4">
+<subfield label="a">DS32</subfield>
+<subfield label="b">.S55 1973</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Shinpan sekai jinmei jiten.</subfield>
+<subfield label="p">Tōyō hen /</subfield>
+<subfield label="c">Kawabe Toshio, Nakamura Tadashi hen.</subfield>
+</varfield>
+<varfield id="246" i1="3" i2="0">
+<subfield label="a">Sekai jinmei jiten.</subfield>
+<subfield label="p">Tōyō hen</subfield>
+</varfield>
+<varfield id="250" i1=" " i2=" ">
+<subfield label="a">Shohan.</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Tōkyō :</subfield>
+<subfield label="b">Tōkyōdō Shuppan,</subfield>
+<subfield label="c">Shōwa 48 [1973]</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">4, 476 pages ;</subfield>
+<subfield label="c">19 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="651" i1=" " i2="0">
+<subfield label="a">Asia</subfield>
+<subfield label="v">Biography</subfield>
+<subfield label="v">Dictionaries</subfield>
+<subfield label="x">Japanese.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Kawabe, Toshio,</subfield>
+<subfield label="d">1914-</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Nakamura, Tadashi,</subfield>
+<subfield label="d">1929-2008</subfield>
+</varfield>
+<varfield id="880" i1="0" i2="0">
+<subfield label="a">新版世界人名辞典.</subfield>
+<subfield label="p">東洋編 /</subfield>
+<subfield label="c">河部利夫, 中村義編.</subfield>
+</varfield>
+<varfield id="880" i1="3" i2="0">
+<subfield label="a">世界人名辞典.</subfield>
+<subfield label="p">東洋編</subfield>
+</varfield>
+<varfield id="880" i1=" " i2=" ">
+<subfield label="a">初版.</subfield>
+</varfield>
+<varfield id="880" i1=" " i2=" ">
+<subfield label="a">東京 :</subfield>
+<subfield label="b">東京堂出版,</subfield>
+<subfield label="c">昭和48 [1973]</subfield>
+</varfield>
+<varfield id="880" i1="1" i2=" ">
+<subfield label="a">河部利夫,</subfield>
+<subfield label="d">1914-</subfield>
+</varfield>
+<varfield id="880" i1="1" i2=" ">
+<subfield label="a">中村義,</subfield>
+<subfield label="d">1929-2008.</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20160104</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1350</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MCASTELLAN</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20160104</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1351</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">BATCH-UPD</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20170616</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1526</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<record>
+<record_header>
+<set_entry>000000002</set_entry>
+</record_header>
+<doc_number>000406461</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200337Ma^4500</fixfield>
+<fixfield id="001">000406461</fixfield>
+<fixfield id="005">20160113162819.0</fixfield>
+<fixfield id="008">151005s2015^^^^fr^ab^^g^bc^^^000^0^fre^d</fixfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9782842802615 (pbk.)</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">2842802616 (pbk.)</subfield>
+</varfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)931813651</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">Fr-PaAMA</subfield>
+<subfield label="b">eng</subfield>
+<subfield label="c">STF</subfield>
+<subfield label="d">OCLCO</subfield>
+<subfield label="d">MZA</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="043" i1=" " i2=" ">
+<subfield label="a">f------</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1="1" i2="4">
+<subfield label="a">N7380.5</subfield>
+<subfield label="b">.A375 2015</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Afrique, la croisée des mondes.</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Saint-Maur :</subfield>
+<subfield label="b">Sépia,</subfield>
+<subfield label="c">©2015.</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">192 pages :</subfield>
+<subfield label="b">illustrations (chiefly color), maps ;</subfield>
+<subfield label="c">23 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Published to accompany an exhibition held at the Musée d&apos;Angoulême, France, May 16 2015-Jan. 3, 2016.</subfield>
+</varfield>
+<varfield id="504" i1=" " i2=" ">
+<subfield label="a">Includes bibliographical references (pages 189-191).</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Art, African</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Ethnicity</subfield>
+<subfield label="z">Africa</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="651" i1=" " i2="0">
+<subfield label="a">Africa</subfield>
+<subfield label="x">Civilization</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="710" i1="2" i2=" ">
+<subfield label="a">Musée des beaux-arts d&apos;Angoulême.</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="a">406461</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20151216</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1219</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20160113</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1627</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MURRY</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20160113</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1628</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<record>
+<record_header>
+<set_entry>000000003</set_entry>
+</record_header>
+<doc_number>000406455</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200421^i^4500</fixfield>
+<fixfield id="001">000406455</fixfield>
+<fixfield id="005">20160104122455.0</fixfield>
+<fixfield id="008">140311s2015^^^^enka^^^^^b^^^^000^0^eng^^</fixfield>
+<varfield id="010" i1=" " i2=" ">
+<subfield label="a">2014007186</subfield>
+</varfield>
+<varfield id="019" i1=" " i2=" ">
+<subfield label="a">890434598</subfield>
+<subfield label="a">890438006</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9780415707909 (hardback)</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">0415707900 (hardback)</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9781138795136 (pbk.)</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">1138795135 (pbk.)</subfield>
+</varfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)871381319</subfield>
+<subfield label="z">(OCoLC)890434598</subfield>
+<subfield label="z">(OCoLC)890438006</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">DLC</subfield>
+<subfield label="b">eng</subfield>
+<subfield label="e">rda</subfield>
+<subfield label="c">DLC</subfield>
+<subfield label="d">YDXCP</subfield>
+<subfield label="d">BTCTA</subfield>
+<subfield label="d">ERASA</subfield>
+<subfield label="d">BDX</subfield>
+<subfield label="d">OCLCF</subfield>
+<subfield label="d">PUL</subfield>
+<subfield label="d">CDX</subfield>
+<subfield label="d">OSU</subfield>
+<subfield label="d">COO</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1="0" i2="0">
+<subfield label="a">N6853.P5</subfield>
+<subfield label="b">S584 2015</subfield>
+</varfield>
+<varfield id="100" i1="1" i2=" ">
+<subfield label="a">Sikes, William A.</subfield>
+<subfield label="e">author.</subfield>
+</varfield>
+<varfield id="245" i1="1" i2="4">
+<subfield label="a">The psychological roots of modernism :</subfield>
+<subfield label="b">Picasso and Jung /</subfield>
+<subfield label="c">William A. Sikes.</subfield>
+</varfield>
+<varfield id="246" i1="3" i2="0">
+<subfield label="a">Picasso and Jung</subfield>
+</varfield>
+<varfield id="264" i1=" " i2="1">
+<subfield label="a">London ;</subfield>
+<subfield label="a">New York :</subfield>
+<subfield label="b">Routledge, Taylor &amp; Francis Group,</subfield>
+<subfield label="c">2015.</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">xiii, 180 pages :</subfield>
+<subfield label="b">illustraitons (some color) ;</subfield>
+<subfield label="c">24 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">still image</subfield>
+<subfield label="b">sti</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="504" i1=" " i2=" ">
+<subfield label="a">Includes bibliographical references (pages 173-176) and index.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Picasso, Pablo,</subfield>
+<subfield label="d">1881-1973</subfield>
+<subfield label="x">Criticism and interpretation.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Picasso, Pablo,</subfield>
+<subfield label="d">1881-1973</subfield>
+<subfield label="x">Psychology.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Jung, C. G.</subfield>
+<subfield label="q">(Carl Gustav),</subfield>
+<subfield label="d">1875-1961.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Modernism (Art)</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Art</subfield>
+<subfield label="x">Psychology.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Picasso, Pablo,</subfield>
+<subfield label="d">1881-1973.</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="a">406455</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20151216</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1159</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20160104</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1224</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MURRY</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20160104</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1224</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">BATCH-UPD</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20170616</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1527</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<record>
+<record_header>
+<set_entry>000000004</set_entry>
+</record_header>
+<doc_number>000405979</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200457Ia^4500</fixfield>
+<fixfield id="001">000405979</fixfield>
+<fixfield id="005">20160105163325.0</fixfield>
+<fixfield id="008">140411s2014^^^^wiuac^^^^^^^^^001^0deng^d</fixfield>
+<varfield id="019" i1=" " i2=" ">
+<subfield label="a">908990670</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9780615951560</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">0615951562</subfield>
+</varfield>
+<varfield id="035" i1="9" i2=" ">
+<subfield label="a">ybpship</subfield>
+</varfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)876410250</subfield>
+<subfield label="z">(OCoLC)908990670</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">IAK</subfield>
+<subfield label="b">eng</subfield>
+<subfield label="c">IAK</subfield>
+<subfield label="d">IAK</subfield>
+<subfield label="d">FKS</subfield>
+<subfield label="d">OCLCF</subfield>
+<subfield label="d">JCR</subfield>
+<subfield label="d">YDXCP</subfield>
+<subfield label="d">BTCTA</subfield>
+<subfield label="d">BDX</subfield>
+<subfield label="d">ZCU</subfield>
+<subfield label="d">OCP</subfield>
+<subfield label="d">DGU</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="043" i1=" " i2=" ">
+<subfield label="a">n-us-il</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1=" " i2="4">
+<subfield label="a">TR715</subfield>
+<subfield label="b">.C37 2014</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Railroaders :</subfield>
+<subfield label="b">Jack Delano&apos;s homefront photography : catalog for the exhibition by the Center for Railroad Photography &amp; Art and the Chicago History Museum, April 5, 2014 to August 10, 2015 /</subfield>
+<subfield label="c">editor, John Gruber ; photographs, Jack Delano from the Library of Congress with new photographs of family members by Pablo Delano ; contributors, John Gruber, Jack Holzhueter, Scott Lothes.</subfield>
+</varfield>
+<varfield id="246" i1="3" i2="0">
+<subfield label="a">Jack Delano&apos;s homefront photography</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Madison, Wis. :</subfield>
+<subfield label="b">Center for Railroad Photography &amp; Art,</subfield>
+<subfield label="c">2014.</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">199 pages :</subfield>
+<subfield label="b">illustrations (some color), portraits ;</subfield>
+<subfield label="c">29 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">still image</subfield>
+<subfield label="b">sti</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Includes index.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Delano, Jack</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Delano, Pablo</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Railroads</subfield>
+<subfield label="x">Employees</subfield>
+<subfield label="v">Pictorial works</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Documentary photography</subfield>
+<subfield label="z">United States</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Portrait photography</subfield>
+<subfield label="z">United States</subfield>
+<subfield label="v">Exhibitions.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Railroads</subfield>
+<subfield label="z">Illinois</subfield>
+<subfield label="z">Chicago</subfield>
+<subfield label="x">History.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Delano, Jack.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Delano, Pablo.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Gruber, John E.,</subfield>
+<subfield label="d">1936-</subfield>
+</varfield>
+<varfield id="710" i1="2" i2=" ">
+<subfield label="a">Center for Railroad Photography and Art</subfield>
+</varfield>
+<varfield id="710" i1="2" i2=" ">
+<subfield label="a">Chicago History Museum</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="a">405979</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">YBPSR</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20151201</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">0916</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20160105</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1633</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MURRY</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20160105</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1633</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">BATCH-UPD</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20170616</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1529</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<record>
+<record_header>
+<set_entry>000000005</set_entry>
+</record_header>
+<doc_number>000405963</doc_number>
+<metadata>
+<oai_marc>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="LDR">^^^^^cam^a2200385Ii^4500</fixfield>
+<fixfield id="001">000405963</fixfield>
+<fixfield id="005">20160105141344.0</fixfield>
+<fixfield id="008">150401s2015^^^^nyua^^^^^^^^^^000^0^eng^d</fixfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">0847847276</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">9780847847273</subfield>
+</varfield>
+<varfield id="035" i1=" " i2=" ">
+<subfield label="a">(OCoLC)906010545</subfield>
+</varfield>
+<varfield id="035" i1="9" i2=" ">
+<subfield label="a">ybpship</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">YDXCP</subfield>
+<subfield label="b">eng</subfield>
+<subfield label="e">rda</subfield>
+<subfield label="c">YDXCP</subfield>
+<subfield label="d">BTCTA</subfield>
+<subfield label="d">BDX</subfield>
+<subfield label="d">OCLCQ</subfield>
+<subfield label="d">OCLCO</subfield>
+<subfield label="d">CDX</subfield>
+<subfield label="d">MZA</subfield>
+<subfield label="d">OCLCF</subfield>
+<subfield label="d">AS0</subfield>
+<subfield label="d">UVV</subfield>
+<subfield label="d">OCL</subfield>
+<subfield label="d">CMA</subfield>
+</varfield>
+<varfield id="049" i1=" " i2=" ">
+<subfield label="a">CMAC</subfield>
+</varfield>
+<varfield id="050" i1=" " i2="4">
+<subfield label="a">TR681.F3</subfield>
+<subfield label="b">A84 2015</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Dior by Avedon / :</subfield>
+<subfield label="b">text by Justine Picardie.</subfield>
+</varfield>
+<varfield id="264" i1=" " i2="1">
+<subfield label="a">New York :</subfield>
+<subfield label="b">Rizzoli,</subfield>
+<subfield label="c">2015.</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">203 pages :</subfield>
+<subfield label="b">illustrations (some color) ;</subfield>
+<subfield label="c">34 x 30 cm</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">still image</subfield>
+<subfield label="b">sti</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">unmediated</subfield>
+<subfield label="b">n</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">volume</subfield>
+<subfield label="b">nc</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Includes Dior sketches as as well as fashion photographs by Avedon.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Dior, Christian</subfield>
+<subfield label="v">Pictorial works.</subfield>
+</varfield>
+<varfield id="600" i1="1" i2="0">
+<subfield label="a">Avedon, Richard.</subfield>
+</varfield>
+<varfield id="610" i1="2" i2="0">
+<subfield label="a">Christian Dior (Firm)</subfield>
+<subfield label="v">Pictorial works.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Fashion photography.</subfield>
+</varfield>
+<varfield id="650" i1=" " i2="0">
+<subfield label="a">Fashion drawing.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Avedon, Richard.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Dior, Christian.</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Picardie, Justine.</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="a">405963</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">RDA ENRICHED</subfield>
+</varfield>
+<varfield id="903" i1=" " i2=" ">
+<subfield label="a">MARS</subfield>
+</varfield>
+<varfield id="994" i1=" " i2=" ">
+<subfield label="a">C0</subfield>
+<subfield label="b">CMA</subfield>
+</varfield>
+<varfield id="OWN" i1=" " i2=" ">
+<subfield label="a">GLOBAL</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">YBPSR</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20151201</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">0916</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">OCLCxfer</subfield>
+<subfield label="b">00</subfield>
+<subfield label="c">20160105</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1413</subfield>
+</varfield>
+<varfield id="CAT" i1=" " i2=" ">
+<subfield label="a">MURRY</subfield>
+<subfield label="b">30</subfield>
+<subfield label="c">20160105</subfield>
+<subfield label="l">CMA01</subfield>
+<subfield label="h">1413</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
+<session-id>U3LR8M6NIQ8CURL6HEJ8TYQ8UX5DMGHU86Q42FJH4T3NA8RUSD</session-id>
+</present>
+ 
