@@ -40,6 +40,17 @@ class CitationEndpointsTest extends TestCase {
     $this->assertEquals($citation, $response->getContent());
   }
 
+  public function testNullAlephCitation() {
+    $xml_stub = file_get_contents(__DIR__ . "/../Fixtures/empty-set.xml");
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/xml"], $xml_stub)
+    );
+
+    $response = $this->get("/api/citation/aleph/123454321");
+
+    $response->assertStatus(400);
+  }
+
   /**
    * /api/citation/isbn/{isbn}
    */
@@ -104,4 +115,17 @@ class CitationEndpointsTest extends TestCase {
     $response->assertStatus(200);
     $this->assertEquals($citation, $response->getContent());
   }
+
+  public function testNullOCLCCitation() {
+    $xml_stub = file_get_contents(__DIR__ . "/../Fixtures/empty-set.xml");
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/xml"], $xml_stub)
+    );
+
+    $response = $this->get("/api/citation/aleph/123454321");
+
+    $response->assertStatus(400);
+  }
 }
+
+

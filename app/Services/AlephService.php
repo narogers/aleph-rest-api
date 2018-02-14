@@ -87,7 +87,8 @@ class AlephService implements ILSInterface {
    * 2006.
    */
   public function metadata_for(string $identifier, string $type = "aleph_id") {
-    $marc_fragment = null;
+    $marc_document = null;
+    $marc_wrapper = "";
  
     if ("oclc" == $type) {
        $set_document = $this->query_aleph($this->query_parameters_for_callNumber($identifier));
@@ -96,19 +97,18 @@ class AlephService implements ILSInterface {
          $marc_document = $this->query_aleph(["op" => "present",
            "set_entry" => 1,
            "set_number" => $set_number]);
-         $marc_fragment = $marc_document->getElementsByTagName("metadata");
+         $marc_wrapper = "metadata";
        } 
     } else if ("aleph_id" == $type) {
        $marc_document = $this->query_aleph($this->query_parameters_for_alephId($identifier));
-       $marc_fragment = $marc_document->getElementsByTagName("record"); 
+       $marc_wrapper = "metadata";
      } 
 
-     if ((null == $marc_fragment) ||
-         (0 == $marc_fragment->length)) {
+     if (null == $marc_document) {
        return null;
      }
 
-     $marc_fragment = $marc_fragment->item(0);
+     $marc_fragment = $marc_document->getElementsByTagName($marc_wrapper)[0];
      $marc = $this->normalize_marc($marc_fragment);
 
      $properties['author'] = $this->process_marc($marc, 

@@ -25,7 +25,11 @@ class CitationApiController extends Controller {
    */
   public function getAlephCitation(string $alephId) {
     $attributes = $this->ils_client->metadata_for($alephId);
-    return $this->citation_service->format($attributes);
+    if (null == $attributes) {
+      return response("Invalid Aleph identifier : $alephId", 400);
+    } else {
+      return $this->citation_service->format($attributes);
+    }
   }
 
   /**
@@ -56,7 +60,11 @@ class CitationApiController extends Controller {
     $citation = $this->oclc_client->citation_for($oclc, "oclc");
     if (null == $citation) {
       $attributes = $this->ils_client->metadata_for($oclc, "oclc");
-      $citation = $this->citation_service->format($attributes);
+      if (null == $attributes) {
+        return response("Invalid OCLC identifer : $oclc", 400);
+      } else {
+        $citation = $this->citation_service->format($attributes);
+      }
     }
     
     return $citation;
