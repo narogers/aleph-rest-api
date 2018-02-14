@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -29,14 +30,23 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
      * @param  \Exception  $exception
      * @return void
      */
     public function report(Exception $exception)
     {
+      if ($this->isHttpException($exception)) {
+        $request = request();
+        $status = $exception->getStatusCode();
+        $ip = $request->getClientIp();
+        $method = $request->getMethod();
+        $path = $request->path();       
+
+        $log = "[$ip] $status {$method} {$path}";
+        Log::error($log);
+      } else { 
         parent::report($exception);
+      }
     }
 
     /**
