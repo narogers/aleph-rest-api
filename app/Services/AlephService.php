@@ -160,7 +160,7 @@ class AlephService implements ILSInterface {
    */
   public function recent_titles() {
     $aleph_document = $this->query_aleph(["op" => "find", 
-      "request" => urlencode("WIP=MT")]);
+      "request" => "WIPC=MT"]);
     if (null == $aleph_document) {
       return []; 
     }
