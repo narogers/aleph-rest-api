@@ -137,11 +137,12 @@ class AlephService implements ILSInterface {
        $properties['identifier']['oclc'] = trim($value);
      }
 
+     /**
+      * ^ indicates that the 008 field was used and you should follow the
+      * MARC specification to get the value at the position for language
+      */
      if (str_contains($properties['language'], '^')) {
-       $language_code = [];
-       preg_match("/\^(\w{3})\^\^$/",
-         $properties['language'], $language_code);
-       $properties['language'] = $language_code[1]; 
+       $properties['language'] = substr($properties['language'], 35, 3); 
      }
 
      return $properties; 
