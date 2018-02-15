@@ -50,7 +50,9 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * Render an exception into an HTTP response. As this API has no web
+     * facing content return a 500 error instead of the default Laravel
+     * response(s)
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
@@ -58,6 +60,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+      $response = ($this->isHttpException($exception)) ?
+        response("Resource not available", 404) :
+        response("Server could not handle request", 500);
+      return $response;
     }
 }
