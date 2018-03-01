@@ -1,6 +1,6 @@
 set :stage, :production
 set :branch, ENV.fetch("REVISION", 'master')
-set :deploy_to, "/var/www/sites/library/apps/library-rest-api"
+set :deploy_to, "/var/www/sites/library.clevelandart.org/apps/library-rest-api"
 
 set :laravel_server_user, "apache"
 set :laravel_artisan_flags, "--env=production"

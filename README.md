@@ -78,10 +78,10 @@ Next you will want to make sure you have public / private keys set up to the pro
 Once you have validated your keys you can cold boot the application. This will set up the directory structure for future deployments.
 
 ```
-cap production deploy:setup
+cap production deploy
 ```
 
-On your production server create or edit _shared/.env_ to fill in the values and initialize the application. At this point you can do a full deployment and follow the instructions above to wire it to your web server. Be sure to mount your application at _current/public/_ so that production pushes are seamless.
+On your production server create _shared/.env_ to fill in the values and initialize the application. Do another deploy which this time should succeed. If so continue by mounting the application on the web server.
 
 ```
 cap production deploy
