@@ -36,19 +36,19 @@ class CitationApiController extends Controller {
    * Provided an ISBN will return a string containing the well formatted 
    * citation from OCLC. If invalid an error will be thrown instead
    */
-  public function getISBNCitation(string $isbn) {
-    return $this->oclc_client->citation_for($isbn, "isbn");
+  public function getISBNCitation(string $isbn, string $style = "chicago") {
+    return $this->oclc_client->citation_for($isbn, "isbn", $style);
   }
 
-  public function getISSNCitation(string $issn) {
-    return $this->oclc_client->citation_for($issn, "issn");
+  public function getISSNCitation(string $issn, string $style = "chicago") {
+    return $this->oclc_client->citation_for($issn, "issn", $style);
   }
 
   /**
    * Retrieve a citation by Library of Congress call number
    */
-  public function getLCCitation(string $lc_call_number) {
-    return $this->oclc_client->citation_for($lc_call_number, "lc");
+  public function getLCCitation(string $lc_call_number, string $style = "chicago") {
+    return $this->oclc_client->citation_for($lc_call_number, "lc", $style);
   }
 
   /**
@@ -56,8 +56,8 @@ class CitationApiController extends Controller {
    * record cannot be found it will fall back to using the local catalog
    * and attempt to construct a citation from that instead
    */
-  public function getOCLCCitation(string $oclc) {
-    $citation = $this->oclc_client->citation_for($oclc, "oclc");
+  public function getOCLCCitation(string $oclc, string $style = "chicago") {
+    $citation = $this->oclc_client->citation_for($oclc, "oclc", $style);
     if (null == $citation) {
       $attributes = $this->ils_client->metadata_for($oclc, "oclc");
       if (null == $attributes) {

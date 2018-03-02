@@ -10,6 +10,7 @@
      *
      * @param OCLC Call Number
      */
-    public function citation_for(string $identifier, string $format); 
+      public function citation_for(string $identifier, string $type, 
+        string $citation_style); 
   }
  ?>

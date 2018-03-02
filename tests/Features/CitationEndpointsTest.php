@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use Mockery;
 use Tests\TestCase;
 
 /**
@@ -60,7 +61,7 @@ class CitationEndpointsTest extends TestCase {
       new Response(200, ["Content-Type" => "text/xml"], "<p>$citation</p>")
     );
 
-    $response = $this->get("/api/citation/isbn/123454321X");
+    $response = $this->get("/api/citation/isbn/123454321X/chicago");
 
     $response->assertStatus(200);
     $this->assertEquals($citation, $response->getContent());
@@ -126,6 +127,22 @@ class CitationEndpointsTest extends TestCase {
 
     $response->assertStatus(400);
   }
+
+  public function testTurabianFormattedCitation() {
+    $citation = "Lipsey, Roger, and Thomas Merton. <i>Angelic Mistakes: The Art of Thomas Merton</i>. Boston, Mass: New Seeds, 2006.";
+    $client_mock = Mockery::mock('App\Services\OCLCInterface');
+    $client_mock->shouldReceive("citation_for")
+      ->once()
+      ->with('123454321X', 'oclc', 'turabian')
+      ->andReturn($citation);
+    $this->app->instance('App\Services\OCLCInterface', $client_mock);
+
+    $response = $this->get("/api/citation/oclc/123454321X/turabian");
+
+    $response->assertStatus(200);
+    $this->assertEquals($citation, $response->getContent());
+  }
+
 }
 
 

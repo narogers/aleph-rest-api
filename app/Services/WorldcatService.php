@@ -33,16 +33,17 @@ class WorldcatService implements OCLCInterface {
    * @param string $format
    * @return string 
    */
- public function citation_for(string $identifier, string $format = "oclc") {
-   switch($format) {
+  public function citation_for(string $identifier, string $type = "oclc",
+     string $citation_style = "chicago") {
+   switch($type) {
     case "isbn":
-       return $this->citation_for_isbn($identifier);
+       return $this->citation_for_isbn($identifier, $citation_style);
      case "issn":
-       return $this->citation_for_issn($identifier);
+       return $this->citation_for_issn($identifier, $citation_style);
      case "lc":
-       return $this->citation_for_lc($identifier);
+       return $this->citation_for_lc($identifier, $citation_style);
      case "oclc":
-       return $this->citation_for_oclc($identifier);
+       return $this->citation_for_oclc($identifier, $citation_style);
     }
  }
  
@@ -51,15 +52,16 @@ class WorldcatService implements OCLCInterface {
    * current cache. If no citation is found the function will return a
    * a NULL value which can be used downstream in error handling
    */
-  public function citation_for_oclc(string $oclc_number) {
-    $citation = Cache::get("oclc:$oclc_number");
+  public function citation_for_oclc(string $oclc_number, string $style = "chicago") {
+    $citation = Cache::get("oclc:$style:$oclc_number");
     if (null !== $citation) {
       return $citation;
     }
 
-    $citation = $this->query_worldcat("catalog/content/citations/$oclc_number");
+    $citation = $this->query_worldcat("catalog/content/citations/$oclc_number",
+       ["cformat" => $style]);
     if (null !== $citation) {  
-      $this->cache_citation("oclc:$oclc_number", $citation);
+      $this->cache_citation("oclc:$style:$oclc_number", $citation);
     }  
     return $citation;
   }
@@ -67,15 +69,15 @@ class WorldcatService implements OCLCInterface {
   /**
    * Query Worldcat for a citation based of Library of Congress call number
    */
-  public function citation_for_lc(string $call_number) {
-    $citation = Cache::get("lc:$call_number");
+  public function citation_for_lc(string $call_number, string $style = "chicago") {
+    $citation = Cache::get("lc:$style:$call_number");
     if (null !== $citation) {
       return $citation;
     }
 
-    $citation = $this->query_worldcat("catalog/content/citations/sn/$call_number");
+    $citation = $this->query_worldcat("catalog/content/citations/sn/$call_number", ["cformat" => $style]);
     if (null !== $citation) {  
-      $this->cache_citation("lc:$call_number", $citation);
+      $this->cache_citation("lc:$style:$call_number", $citation);
     }  
     return $citation;
   }
@@ -83,15 +85,16 @@ class WorldcatService implements OCLCInterface {
   /**
    * Query Worldcat for a citation based on ISSN
    */
-  public function citation_for_issn(string $issn) {
-    $citation = Cache::get("issn:$issn");
+  public function citation_for_issn(string $issn, string $style = "chicago") {
+    $citation = Cache::get("issn:$style:$issn");
     if (null !== $citation) {
       return $citation;
     }
 
-    $citation = $this->query_worldcat("catalog/content/citations/issn/$issn");
+    $citation = $this->query_worldcat("catalog/content/citations/issn/$issn",
+      ["cformat" => $style]);
     if (null !== $citation) {  
-      $this->cache_citation("issn:$issn", $citation);
+      $this->cache_citation("issn:$style:$issn", $citation);
     }  
     return $citation;
   }
@@ -99,15 +102,16 @@ class WorldcatService implements OCLCInterface {
   /**
    * Query Worldcat for a citation based on ISBN
    */
-  public function citation_for_isbn(string $isbn) {
-    $citation = Cache::get("isbn:$isbn");
+  public function citation_for_isbn(string $isbn, string $style = "chicago") {
+    $citation = Cache::get("isbn:$style:$isbn");
     if (null !== $citation) {
       return $citation;
     }
 
-    $citation = $this->query_worldcat("catalog/content/citations/isbn/$isbn");
+    $citation = $this->query_worldcat("catalog/content/citations/isbn/$isbn",
+       ["cformat" => $style]);
     if (null !== $citation) {  
-      $this->cache_citation("isbn:$isbn", $citation);
+      $this->cache_citation("isbn:$style:$isbn", $citation);
     }  
     return $citation;
   }
@@ -115,9 +119,9 @@ class WorldcatService implements OCLCInterface {
   protected function query_worldcat(string $endpoint, array $parameters = []) {
     try {
       $query_parameters = array_merge($parameters,
-        ["cformat" => "chicago", "wskey" => $this->worldcat_key]);
+        ["wskey" => $this->worldcat_key]);
       
-      Log::info("Querying " . $this->worldcat_base . "/$endpoint");
+      Log::info("OCLC Query : " . $this->worldcat_base . "/$endpoint");
       
       $response = $this->client->get($this->worldcat_base . "/$endpoint",
         ["query" => $query_parameters]);
