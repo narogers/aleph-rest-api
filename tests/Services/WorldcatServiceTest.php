@@ -92,5 +92,15 @@ class WorldcatServiceTest extends TestCase {
 
     $this->assertEquals('Lipsey, Roger, and Thomas Merton. 2006. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds.', $citation);
   }
+
+  public function testTurabianFormattedCitation() {
+    $this->mock_responses->append(
+      new Response(200, ["Content-Type" => "text/plain"],
+        '<p class="citation_style_TURABIAN">Lipsey, Roger, and Thomas Merton. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds, 2006. </p>'));
+
+    $citation = $this->oclc_client->citation_for("987651234", "oclc");
+
+    $this->assertEquals('Lipsey, Roger, and Thomas Merton. <i>Angelic mistakes: the art of Thomas Merton</i>. Boston, Mass: New Seeds, 2006.', $citation);
+  }
 }
 ?>

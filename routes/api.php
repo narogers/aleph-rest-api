@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 */
 Route::prefix("citation")->group(function() {
   Route::get("aleph/{alephId}", "CitationApiController@getAlephCitation");
-  Route::get("isbn/{isbn}", "CitationApiController@getISBNCitation");
-  Route::get("issn/{Issn}", "CitationApiController@getISSNCitation");
-  Route::get("lc/{call_number}", "CitationApiController@getLCCitation");
-  Route::get("oclc/{call_number}", "CitationApiController@getOCLCCitation");
+  Route::get("isbn/{isbn}/{style?}", "CitationApiController@getISBNCitation");
+  Route::get("issn/{issn}/{style?}", "CitationApiController@getISSNCitation");
+  Route::get("lc/{call_number}/{style?}", "CitationApiController@getLCCitation");
+  Route::get("oclc/{call_number}/{style?}", "CitationApiController@getOCLCCitation");
 });
 
 Route::prefix("opac")->group(function() {
