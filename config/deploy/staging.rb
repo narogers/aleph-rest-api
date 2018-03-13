@@ -8,4 +8,4 @@ set :composer_install_flags, "--no-dev --no-interaction --optimize-autoloader --
 set :composer_roles, :all
 set :composer_dump_autoload, "--optimize"
 
-server "appdev02.clevelandart.org", user: "nrogers", roles: %w{app db web}
+server "staging.srv", user: "webapps", roles: %w{app db web}

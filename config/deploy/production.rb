@@ -21,4 +21,4 @@ set :file_permission_paths, [
 set :file_permission_users, ['apache', 'nrogers']
 set :file_permission_groups, %w{web}
 
-server "cmaweb24-lib.clevelandart.org", user: "nrogers", roles: %w{app db web}
+server "production.srv", user: "webapps", roles: %w{app db web}
