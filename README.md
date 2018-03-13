@@ -13,28 +13,17 @@ Check out the repository to a local directory on your machine. If installing to 
 Mount the application within your web server. It is highly recommended not to simply drop it into the document root. Instead use an alias such as the one below for Apache 2.4
 
 ```
-Alias /api /var/www/apps/library-rest-api/public
-<Directory /var/www/apps/library-rest-api/public/>
+Alias /api /var/www/apps/aleph-rest-api/public
+<Directory /var/www/apps/aleph-rest-api/public/>
   AllowOverride none
   Require all granted
 
-  # If bridging to the legacy version
   RewriteEngine On
   RewriteBase /api
 
   RewriteRule ^/(.*)/$ /$1 [PT]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Redirects from legacy REST API to new endpoints
-  RewriteRule rest/aleph/alephid/(.*)$ api/citation/aleph/$1 [R=301,L]
-  RewriteRule rest/aleph/artist/(.*)$ api/opac/artist/$1 [R=301,L]
-  RewriteRule rest/aleph/object/(.*)$ api/opac/object/$1 [R=301,L]
-  RewriteRule rest/aleph/oclc/(.*)$ api/citation/oclc/$1 [R=301,L]
-  RewriteRule rss/new_titles\.php$ api/opac/recent_titles [R=301,L]
-  RewriteCond %{QUERY_STRING} (alephid|isbn|issn|lc|oclc)=(.*)
-  RewriteRule services/cite/index\.php$ api/citation/%1/%2 [R=301,L]
-
   # Base rule for Laravel
   RewriteRule ^ index.php [L]
 </Directory>
@@ -55,7 +44,7 @@ ALEPH_LIB = "lib01"
 OAI_STYLESHEET = "stylesheet.xsl"
 
 # WorldCat key provided by OCLC for access to citation service
-OCLC_KEY = 
+OCLC_KEY = my_development_key
 
 # Link back to local library catalog
 OPAC_URI = "http://opac.site.org"
@@ -117,4 +106,4 @@ Code coverage is provided for most of the code using [PHPUnit](https://phpunit.d
 vendor/bin/phpunit tests/
 ```
 
-When adding new functionality be sure to add tests underneath _tests/_ using the existing files as a template. Any errors should be resolved before merging new commits into master.
+When adding new functionality tests should be added to  _tests/_ using the existing files as a template. Any errors should be resolved before merging new commits into master.
